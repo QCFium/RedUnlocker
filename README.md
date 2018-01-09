@@ -22,7 +22,7 @@ Use this at your own risk. I am not responsible for anything.
     4) Select "Execute GM9 script"
 
 ## Requirement
-Godmode9 version from 1.2.8 to 1.4.3
+Godmode9 version from 1.2.8 to 1.5.1
 
 ## Credits
 - [__d0k3__](https://github.com/d0k3) for [GodMode9](https://github.com/d0k3/GodMode9) 

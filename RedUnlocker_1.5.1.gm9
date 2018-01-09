@@ -1,0 +1,19 @@
+# Red Unlocker for 1.5.1
+# author : windows-server-2003
+# permission : Blue
+# This script will unlock the SysNAND level3 permission(Red)
+# with only memory permission(Blue)
+
+# DO NOT RUN THIS on versions other than 1.5.1
+# or it may write to unexpected location and I DON'T KNOW WHAT WILL HAPPEN
+# RUN THIS AT YOUR OWN RISK
+# I am not responsible for anything
+
+set SUCCESSMSG "Red permission unlocked\n \nTo say :\nBe careful when you unlock Blue permission"
+ask -s "RedUnlocker 1.5.1\n \nDo you know what you are doing?\nIf not, press B button.\nCONTINUE AT YOUR OWN RISK"
+
+set ERRORMSG "This script needs the blue permission."
+allow -a M:
+
+set ERRORMSG "Unknown error"
+fill M:/arm9.mem@52638:4 FF
