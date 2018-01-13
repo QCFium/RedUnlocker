@@ -9,11 +9,17 @@
 # RUN THIS AT YOUR OWN RISK
 # I am not responsible for anything
 
-set SUCCESSMSG "Red permission unlocked\n \nTo say :\nBe careful when you unlock Blue permission"
-ask -s "RedUnlocker 1.4.1\n \nDo you know what you are doing?\nIf not, press B button.\nCONTINUE AT YOUR OWN RISK"
+# check version - check the hash of the top 256KB of the firm
+    set ERRORMSG "not 1.4.1"
+    sha M:/arm9.mem@6000:40000 391783EA531CC78F071218B7ACC3BC2D9F80615AF93342B09C67C63E4D45729E
 
-set ERRORMSG "This script needs the blue permission."
-allow -a M:
+# ask user
+    set SUCCESSMSG "Red permission unlocked\n \nTo say :\nBe careful when you unlock Blue permission"
+    ask -s "RedUnlocker 1.4.1\n \nDo you know what you are doing?\nIf not, press B button.\nCONTINUE AT YOUR OWN RISK"
+
+# get the blue permission
+    set ERRORMSG "This script needs the blue permission."
+    allow -a M:
 
 #### make res_RU.bin filled with 0xFF for 4Byte
     set ERRORMSG "failed to make 'res.bin'"
