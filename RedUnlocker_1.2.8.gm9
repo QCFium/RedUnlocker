@@ -1,6 +1,6 @@
 # Red Unlocker for 1.2.8
 # author : windows-server-2003
-# permission : Blue
+# permissions : Blue
 # This script will unlock the SysNAND level3 permission(Red)
 # with only memory permission(Blue)
 

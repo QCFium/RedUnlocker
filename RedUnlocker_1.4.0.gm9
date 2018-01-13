@@ -1,6 +1,6 @@
 # Red Unlocker for 1.4.0
 # author : windows-server-2003
-# permission : Blue
+# permissions : Blue
 # This script will unlock the SysNAND level3 permission(Red)
 # with only memory permission(Blue)
 
@@ -10,7 +10,7 @@
 # I am not responsible for anything
 
 # check version - check the hash of the top 256KB of the firm
-    set ERRORMSG "not 1.4.0"
+    set ERRORMSG "Not running on 1.4.0\nThis script supports 1.4.0 only!"
     sha M:/arm9.mem@6000:40000 0EDDDCF555F7584A1C9E67F9F7AEEDEAB994BC7B1179251B97EBED287E173118
 
 # ask user

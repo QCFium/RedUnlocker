@@ -2,7 +2,7 @@ set PREVIEW_MODE off
 
 # Red Unlocker for 1.4.3
 # author : windows-server-2003
-# permission : Blue
+# permissions : Blue
 # This script will unlock the SysNAND level3 permission(Red)
 # with only memory permission(Blue)
 
@@ -12,7 +12,7 @@ set PREVIEW_MODE off
 # I am not responsible for anything
 
 # check version - check the hash of the top 256KB of the firm
-    set ERRORMSG "not 1.4.3"
+    set ERRORMSG "Not running on 1.4.3\nThis script supports 1.4.3 only!"
     sha M:/arm9.mem@6000:40000 5645D011438D648803549762C532C866A5EE919C3C83D998A9AB8ADEF621E7C0
 
 # ask user
