@@ -9,11 +9,11 @@
 # RUN THIS AT YOUR OWN RISK
 # I am not responsible for anything
 
-ask -s "Do you know what you are doing?\nIf not, press B button.\nCONTINUE AT YOUR OWN RISK"
+ask -s "RedUnlocker 1.3.1\n \nDo you know what you are doing?\nIf not, press B button.\nCONTINUE AT YOUR OWN RISK"
 
-set ERRORMSG "This needs blue permission."
-set SUCCESSMSG "Red permission unlocked.\n \nTo say :\nBe careful when you unlock Blue permission"
-allow M:
+set ERRORMSG "This script needs the blue permission."
+set SUCCESSMSG "The red permission unlocked\n \nTo say :\nBe careful when you unlock the blue permission"
+allow M:/fcram.mem
 
 set ERRORMSG "Failed to read 'res.bin'"
 inject $[CURRDIR]/res.bin@0:4 M:/fcram.mem@3F53BE0

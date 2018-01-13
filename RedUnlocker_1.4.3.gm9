@@ -1,3 +1,5 @@
+set PREVIEW_MODE off
+
 # Red Unlocker for 1.4.3
 # author : windows-server-2003
 # permission : Blue
@@ -14,15 +16,15 @@
     sha M:/arm9.mem@6000:40000 5645D011438D648803549762C532C866A5EE919C3C83D998A9AB8ADEF621E7C0
 
 # ask user
-    set SUCCESSMSG "Red permission unlocked\n \nTo say :\nBe careful when you unlock Blue permission"
+    set SUCCESSMSG "The red permission unlocked\n \nTo say :\nBe careful when you unlock the blue permission"
     ask -s "RedUnlocker 1.4.3\n \nDo you know what you are doing?\nIf not, press B button.\nCONTINUE AT YOUR OWN RISK"
 
 # get the blue permission
     set ERRORMSG "This script needs the blue permission."
-    allow -a M:
+    allow M:/arm9.mem
 
-#### make res_RU.bin filled with 0xFF for 4Byte
-    set ERRORMSG "failed to make 'res.bin'"
+#### make res_RU.bin filled with 0xFF for 1Byte
+    set ERRORMSG "failed to make 'res_RU.bin'"
     set RESPATH 0:/gm9/res_RU.bin
     
     # remove old files
@@ -36,16 +38,11 @@
     # Is really 0x00 ?
     sha $[RESPATH].tmp 6E340B9CFFB37A989CA544E6BB780A2C78901D3FB33738768511A30617AFA01D
 
-    # get sha256(The 5th Byte of the sha256 of 0x00 is 0xFF)
+    # get sha256 (The 5th byte is 0xFF)
     shaget $[RESPATH].tmp $[RESPATH].tmp.sha
     
-    # reserve 4Bytes (1th Byte is already set 0xFF by this step)
-    inject $[RESPATH].tmp.sha@4:4 $[RESPATH]@0
-    
-    # injecting to other 3Bytes
-    inject $[RESPATH].tmp.sha@4:1 $[RESPATH]@1
-    inject $[RESPATH].tmp.sha@4:1 $[RESPATH]@2
-    inject $[RESPATH].tmp.sha@4:1 $[RESPATH]@3
+    # inject 0xFF to the output
+    inject $[RESPATH].tmp.sha@4:1 $[RESPATH]@0
     
     # remove temporary files
     rm $[RESPATH].tmp
