@@ -23,34 +23,6 @@ set PREVIEW_MODE off
     set ERRORMSG "This script needs the blue permission."
     allow M:/arm9.mem
 
-#### make res_RU.bin filled with 0xFF for 1Byte
-    set ERRORMSG "failed to make 'res_RU.bin'"
-    set RESPATH 0:/gm9/res_RU.bin
-    
-    # remove old files
-    rm -o -s $[RESPATH]
-    rm -o -s $[RESPATH].tmp
-    rm -o -s $[RESPATH].tmp.sha
-    
-    # Always 0x00
-    inject M:/boot9.bin@FFFF:1 $[RESPATH].tmp@0
-    
-    # Is really 0x00 ?
-    sha $[RESPATH].tmp 6E340B9CFFB37A989CA544E6BB780A2C78901D3FB33738768511A30617AFA01D
-
-    # get sha256 (The 5th byte is 0xFF)
-    shaget $[RESPATH].tmp $[RESPATH].tmp.sha
-    
-    # inject 0xFF to the output
-    inject $[RESPATH].tmp.sha@4:1 $[RESPATH]@0
-    
-    # remove temporary files
-    rm $[RESPATH].tmp
-    rm $[RESPATH].tmp.sha
-
 #### Actual unlocking
-    set ERRORMSG "Failed to read 'res_RU.bin'"
-    inject $[RESPATH]@0:4 M:/arm9.mem@6A8C0
-
-    # remove res_RU.bin
-    rm $[RESPATH]
+    set ERRORMSG "Failed to read from the MCU"
+	inject M:/mcu_3ds_regs.mem@80:4 M:/arm9.mem@6A8C0
