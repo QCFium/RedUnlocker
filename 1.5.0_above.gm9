@@ -14,39 +14,39 @@ set ERR_MSG_VER "Unsupported version"
 # check version - check the hash of the top 256KB of the firm(<= 1.5.1) or use $[GM9VER]
 set ERRORMSG $[ERR_MSG_VER] # instead of "'if' command not found" for lower versions
 if sha -o -s M:/arm9.mem@6000:40000 AF01396C62963613DFE5F5E36B06C9863ED733F05F14ED73B037C259D3BA2E6C
-	######## 1.5.0
-	set GM9_VERSION "1.5.0"
-	set ADDRESS M:/arm9.mem@51FB0
+    ######## 1.5.0
+    set GM9_VERSION "1.5.0"
+    set ADDRESS M:/arm9.mem@51FB0
 elif sha -o -s M:/arm9.mem@6000:40000 31DF2A11BF4514F1B8C8D3B12EA738733CFFA301364499CF33DF4B8B48111C86
-	######## 1.5.1
-	set GM9_VERSION "1.5.1"
-	set ADDRESS M:/arm9.mem@52638
-elif chk $[GM9VER] 1.6.0
-	######## 1.6.0
-	set GM9_VERSION "1.6.0"
-	set ADDRESS M:/arm9.mem@56188
+    ######## 1.5.1
+    set GM9_VERSION "1.5.1"
+    set ADDRESS M:/arm9.mem@52638
+elif chk -o -s $[GM9VER] v1.6.0
+    ######## 1.6.0
+    set GM9_VERSION "1.6.0"
+    set ADDRESS M:/arm9.mem@56188
 else
-	# version not supported
-	set ERRORMSG $[ERR_MSG_VER]
+    # version not supported
+    set ERRORMSG $[ERR_MSG_VER]
     cp 0 0 # force fail
 end
 
 ## actual operations
 # ask user
-	set PREVIEW_MODE "Version : $[GM9_VERSION]\n \nAsking user"
-	set SUCCESSMSG "The red permission unlocked\n \nTo say :\nBe careful when you unlock the blue permission"
-	ask -s "RedUnlocker $[GM9_VERSION]\n \nDo you know what you are doing?\nIf not, press B button.\nCONTINUE AT YOUR OWN RISK"
+    set PREVIEW_MODE "Version : $[GM9_VERSION]\n \nAsking user"
+    set SUCCESSMSG "The red permission unlocked\n \nTo say :\nBe careful when you unlock the blue permission"
+    ask -s "RedUnlocker $[GM9_VERSION]\n \nDo you know what you are doing?\nIf not, press B button.\nCONTINUE AT YOUR OWN RISK"
 
 # get the blue permission
-	set PREVIEW_MODE "Version : $[GM9_VERSION]\n \nGetting the blue permission"
-	set ERRORMSG "This script needs the blue permission."
-	allow M:/arm9.mem
+    set PREVIEW_MODE "Version : $[GM9_VERSION]\n \nGetting the blue permission"
+    set ERRORMSG "This script needs the blue permission."
+    allow M:/arm9.mem
 
 # actual unlocking
-	set PREVIEW_MODE "Version : $[GM9_VERSION]\n \nUnlocking the red permission"
-	set ERRORMSG "Unknown error"
-	if chk -o -s $[GM9_VERSION] 1.5.0 # 1.5.0 does not support the 'fill' command
-		inject M:/mcu_3ds_regs.mem@80:4 $[ADDRESS]
-	else
-		fill $[ADDRESS]:4 FF
-	end
+    set PREVIEW_MODE "Version : $[GM9_VERSION]\n \nUnlocking the red permission"
+    set ERRORMSG "Unknown error"
+    if chk -o -s $[GM9_VERSION] 1.5.0 # 1.5.0 does not support the 'fill' command
+        inject M:/mcu_3ds_regs.mem@80:4 $[ADDRESS]
+    else
+        fill $[ADDRESS]:4 FF
+    end
