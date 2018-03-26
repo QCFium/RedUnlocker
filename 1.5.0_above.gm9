@@ -11,7 +11,7 @@ set ERR_MSG_VER "Unsupported version"
 # RUN THIS AT YOUR OWN RISK
 # I am not responsible for anything
 
-# check version - check the hash of the top 256KB of the firm(<= 1.5.1) or use $[GM9VER]
+# check version - check the hash of the top 256KB of the firm
 set ERRORMSG $[ERR_MSG_VER] # instead of "'if' command not found" for lower versions
 if sha -o -s M:/arm9.mem@6000:40000 AF01396C62963613DFE5F5E36B06C9863ED733F05F14ED73B037C259D3BA2E6C
     ######## 1.5.0
@@ -21,10 +21,14 @@ elif sha -o -s M:/arm9.mem@6000:40000 31DF2A11BF4514F1B8C8D3B12EA738733CFFA30136
     ######## 1.5.1
     set GM9_VERSION "1.5.1"
     set ADDRESS M:/arm9.mem@52638
-elif chk -o -s $[GM9VER] v1.6.0
+elif sha -o -s M:/arm9.mem@6000:40000 422FA3B196F8850C4CBB42F886AD1158452BBDE00EA390FD87A952319C711BB1
     ######## 1.6.0
     set GM9_VERSION "1.6.0"
     set ADDRESS M:/arm9.mem@56188
+elif sha -o -s M:/arm9.mem@6000:40000 D33C7C683648D1BAD659307F7C93A19006FCFF67317181A537CFE997E5CD2B57
+	######## 1.6.1
+	set GM9_VERSION "1.6.1\n2nd Anniversary Edition"
+	set ADDRESS M:/arm9.mem@56938
 else
     # version not supported
     set ERRORMSG $[ERR_MSG_VER]
