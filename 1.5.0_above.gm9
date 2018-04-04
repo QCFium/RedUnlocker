@@ -29,6 +29,10 @@ elif sha -o -s M:/arm9.mem@6000:40000 D33C7C683648D1BAD659307F7C93A19006FCFF6731
 	######## 1.6.1
 	set GM9_VERSION "1.6.1\n2nd Anniversary Edition"
 	set ADDRESS M:/arm9.mem@56938
+elif sha -o -s M:/arm9.mem@6000:40000 F6310ACD3EE1D07256AE4BDFC73B89EEE19DDECAEF143C672E0CD59B9A48B8E6
+	######## 1.6.2
+	set GM9_VERSION "1.6.2\nApril fools 2018 Edition"
+	set ADDRESS M:/arm9.mem@58428
 else
     # version not supported
     set ERRORMSG $[ERR_MSG_VER]
