@@ -1,3 +1,8 @@
+# !!WARNING!!
+## I'm switching away from Github.
+## This repository will only be up to date until July 2018.
+## Please visit https://gitlab.com/QCFium/RedUnlocker instead.
+
 # RedUnlocker
 ## Description
 These GM9 scripts will unlock the red permission of GodMode9 with only the blue one
